@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ce1faa7116.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles.css">
     <title>Mini Message Board</title>
 </head>
 <body>
-    <h1><%= title %> </h1>
-    <ul><% messages.forEach((message) => {
+    <%- include('header', {title})  %> 
+    <main>
+    <div class="message-con"><% messages.forEach((message, index) => {
         if(message.text.length > 0){
-            %><li> <%= message.user %> : <%= message.text %> | <%= message.added %></li><%
+            %><div class="message" >
+                 <h3><%= message.user.length > 15 ? message.user.slice(0, 15)
+                     + '...' : message.user %></h3>
+                <p class="message-text"><%= message.text.length > 25 ? message.text.slice(0, 25)
+                     + '...' : message.text %></p>  
+                <div class="message-bottom">
+           <p> <%= message.added %></p>
+           <a href='/message/<%= index %>' class="open">Open</a>
+           </div>
+           </div>
+             <%
         }
-    }) %> </ul>
-    <a href="/new">New Message</a>
+    }) %></div>
+    </main>
+    <div class="bg"></div>
 </body>
 </html>

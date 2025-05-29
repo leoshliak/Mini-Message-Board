@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ce1faa7116.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles.css">
     <title>New Message</title>
 </head>
 <body>
-    <h1>New Message</h1>
+    <%- include('header', {title})  %>
+    <main>
     <form method="POST" action="/new">
+        <h2>Fill out the form</h2>
+        <div class="group">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
+        <input type="text" id="username" name="username" maxlength="40" required>
+       </div>
+       <div class="group">
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+        <textarea id="message" name="message" rows="13"  required></textarea>
+    </div>
         <button type="submit">Submit</button>
-        <a href="/">Back</a>
      </form>
+    </main>
 </body>
 </html>
